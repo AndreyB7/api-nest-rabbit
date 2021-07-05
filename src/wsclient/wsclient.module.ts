@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common'
-import { WSService } from './wsclient'
+import { EthereumService } from './wsclient.service'
+import { EthereumController } from './wsclient.controller'
 
 @Module({
-	providers: [ WSService ]
+	controllers: [ EthereumController ],
+	providers: [ EthereumService ]
 })
 
 export class WsModule {}

@@ -3,7 +3,7 @@ import {Controller} from "@nestjs/common";
 import {MessagePattern} from "@nestjs/microservices";
 // import {Block} from "web3/eth/types";
 
-import {EthereumService} from "./wsclient.service";
+import { EthereumService } from "./wsclient.service";
 
 @Controller()
 export class EthereumController {

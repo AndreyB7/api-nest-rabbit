@@ -55,4 +55,15 @@ export class EthereumService extends Server implements CustomTransportStrategy {
   public close(): void {
     this.subscription.unsubscribe();
   }
+
+  public rabbitMSG(): void {
+    try {
+      this.rabbitClientProxy.emit('push-message', {
+        test: "test-value"
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
 }

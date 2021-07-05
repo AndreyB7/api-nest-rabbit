@@ -1,10 +1,14 @@
 import {EMPTY, Observable} from "rxjs";
 import {CustomTransportStrategy, MessageHandler, Server} from "@nestjs/microservices";
 import Web3 from "web3";
+import {ClientProxy} from "@nestjs/microservices";
 // import {Block, BlockHeader} from "web3/eth/types";
 
 
 export class EthereumService extends Server implements CustomTransportStrategy {
+  
+  private readonly rabbitClientProxy: ClientProxy;
+
   private subscription: any;
 
   public listen(callback: () => void): void {
@@ -23,6 +27,11 @@ export class EthereumService extends Server implements CustomTransportStrategy {
       web3.eth.getBlock(blockHeader.number).then(async (block: any) => {
         return this.call("BLOCK", block).then(observable => {
           observable.subscribe(console.log);
+          
+          this.rabbitClientProxy.emit('push-message', {
+            test: "test-value"
+          });
+
         });
       });
     });

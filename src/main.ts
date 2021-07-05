@@ -10,8 +10,6 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const rmqUrl = configService.get<string>("RMQ_URL");
 
-  console.log(rmqUrl);
-
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {

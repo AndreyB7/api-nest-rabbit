@@ -1,20 +1,23 @@
-import "../env";
-
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from 'src/app.module';
 import { MicroserviceOptions, Transport } from "@nestjs/microservices";
+import {ConfigService} from "@nestjs/config";
 
 async function bootstrap() {
+
   const app = await NestFactory.create(AppModule);
-  // const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
-  //   transport: Transport.RMQ,
-  //   options: {
-  //     urls: ['amqp://localhost:5672'],
-  //     queue: 'cats_queue',
-  //     queueOptions: {
-  //       durable: false
-  //     },
-  //   },
-  // });
+
+  const configService = app.get(ConfigService);
+  const rmqUrl = configService.get<string>("RMQ_URL");
+
+  console.log(rmqUrl);
+
+  app.connectMicroservice<MicroserviceOptions>({
+    transport: Transport.RMQ,
+    options: {
+      urls: [rmqUrl],
+      queue: 'first_queue',
+    },
+  });
 }
 bootstrap();

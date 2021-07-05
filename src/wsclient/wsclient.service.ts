@@ -28,9 +28,14 @@ export class EthereumService extends Server implements CustomTransportStrategy {
         return this.call("BLOCK", block).then(observable => {
           observable.subscribe(console.log);
           
-          this.rabbitClientProxy.emit('push-message', {
-            test: "test-value"
-          });
+          try {
+            this.rabbitClientProxy.emit('push-message', {
+              test: "test-value"
+            });
+          } catch (e) {
+            console.log(e);
+          }
+
 
         });
       });

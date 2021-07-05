@@ -1,0 +1,24 @@
+{
+  "name": "api-nest-rabbit",
+  "version": "1.0.0",
+  "description": "API Nestjs RabbitMQ",
+  "main": "main.ts",
+  "scripts": {
+    "start": "nest start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/common": "^7.6.18",
+    "@nestjs/core": "^7.6.18",
+    "@nestjs/platform-express": "^7.6.18",
+    "dotenv": "^10.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.1.0",
+    "web3": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.0.0"
+  }
+}

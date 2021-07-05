@@ -1,3 +1,0 @@
-API
-Nestjs
-RabbitMQ

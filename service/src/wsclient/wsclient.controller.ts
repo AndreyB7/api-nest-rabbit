@@ -14,7 +14,7 @@ export class EthereumController {
 //     return (block.transactions);
 //   }
   public block(block: any): void {
-    return this.ethereumService.rabbitMSG();//(block.transactions);
+    return this.wsService.readBlock(block);//(block.transactions);
   }
 
 }

@@ -18,7 +18,7 @@ async function bootstrap() {
     },
   });
 
-  await app.startAllMicroservicesAsync().then(() => console.info(`Message service will push to ${rmqUrl}`));
+  await app.startAllMicroservicesAsync().then(() => console.info(`Listen messages from ${rmqUrl}`));
 
 }
 bootstrap();

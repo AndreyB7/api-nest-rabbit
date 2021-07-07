@@ -7,4 +7,4 @@ import { EthereumController } from './wsclient.controller'
 	providers: [ EthereumService ]
 })
 
-export class WsModule {}
+export class EthereumModule {}

@@ -1,7 +1,6 @@
-import {Observable} from "rxjs";
+// import {Observable} from "rxjs";
 import {Controller} from "@nestjs/common";
 import {MessagePattern} from "@nestjs/microservices";
-// import {Block} from "web3/eth/types";
 
 import { EthereumService } from "./wsclient.service";
 
@@ -10,11 +9,8 @@ export class EthereumController {
   constructor(private readonly ethereumService: EthereumService) {}
   
   @MessagePattern("TRANSACTION")
-//   public block(block: any): Observable<object> {
-//     return (block.transactions);
-//   }
   public block(block: any): void {
-    return this.wsService.readBlock(block);//(block.transactions);
+    return this.ethereumService.block(block);
   }
 
 }

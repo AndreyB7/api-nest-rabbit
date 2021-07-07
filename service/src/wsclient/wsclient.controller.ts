@@ -9,7 +9,7 @@ import { EthereumService } from "./wsclient.service";
 export class EthereumController {
   constructor(private readonly ethereumService: EthereumService) {}
   
-  @MessagePattern("BLOCK")
+  @MessagePattern("TRANSACTION")
 //   public block(block: any): Observable<object> {
 //     return (block.transactions);
 //   }

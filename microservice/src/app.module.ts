@@ -1,11 +1,13 @@
+import "./env";
+
 import { Module } from '@nestjs/common'
-import { WsModule } from './wsclient/wsclient.module'
+import { EthereumModule } from './ethereum/ethereum.module'
 import { ConfigModule } from "@nestjs/config";
 
 @Module({
 	imports: [
 		ConfigModule.forRoot(),
-		WsModule
+		EthereumModule
 	]
 })
 export class AppModule {}

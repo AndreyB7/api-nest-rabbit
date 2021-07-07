@@ -14,11 +14,13 @@ async function bootstrap() {
     transport: Transport.RMQ,
     options: {
       urls: [rmqUrl],
-      queue: 'first_queue',
+      queue: process.env.RMQ_Q
     },
   });
 
   await app.startAllMicroservicesAsync().then(() => console.info(`Listen messages from ${rmqUrl}`));
+
+  app.listen()
 
 }
 bootstrap();

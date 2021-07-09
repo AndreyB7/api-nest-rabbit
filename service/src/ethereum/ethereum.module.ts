@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
-import { EthereumService } from './wsclient.service'
-import { EthereumController } from './wsclient.controller'
+import { EthereumService } from './ethereum.service'
+import { EthereumController } from './ethereum.controller'
 
 @Module({
 	controllers: [ EthereumController ],

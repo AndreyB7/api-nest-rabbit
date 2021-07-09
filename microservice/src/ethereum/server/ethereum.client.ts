@@ -1,7 +1,6 @@
-// import Web3 from "web3";
+
 const Web3 = require("web3");
 
-//const SOCKET_ADDRESS = configService.get<string>("ETH_NODE_RPC_WEBSOCKET_ADDR");
 const SOCKET_ADDRESS = process.env.ETH_NODE_RPC_WEBSOCKET_ADDR;
 
 const provider = new Web3.providers.WebsocketProvider(SOCKET_ADDRESS);

@@ -21,8 +21,10 @@ export class EthereumService {
   ethClient: ClientProxy;
 
   public block(block: any): Observable<void> {
+    // return this.ethClient.emit("TRANSACTION", block);
     return concat(
-      ...block.transactions.map(txHash => {
+      ...block.transactions.map( (txHash, i) => {
+        if (i > 0) return;
         return from(
           this.client.eth.getTransaction((txHash as unknown) as string).then((transaction: any) => {
             return this.ethClient.emit("TRANSACTION", transaction);

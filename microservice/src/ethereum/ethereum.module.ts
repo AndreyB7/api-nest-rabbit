@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { EthereumService } from './ethereum.service'
 import { EthereumController } from './ethereum.controller'
-import client from "./server/ws.ethereum";
+import client from "./server/ethereum.client";
 
 @Module({
 	providers: [ 

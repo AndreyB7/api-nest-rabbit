@@ -1,6 +1,6 @@
 import {Observable, EMPTY} from "rxjs";
 import {CustomTransportStrategy, MessageHandler, Server} from "@nestjs/microservices";
-import ethereum from "./ws.ethereum";
+import ethereum from "./ethereum.client";
 
 export class EthereumServer extends Server implements CustomTransportStrategy {
   private subscription: any;

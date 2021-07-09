@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { EthereumModule } from './wsclient/wsclient.module'
+import { EthereumModule } from './ethereum/ethereum.module'
 import { ConfigModule } from "@nestjs/config";
 
 @Module({

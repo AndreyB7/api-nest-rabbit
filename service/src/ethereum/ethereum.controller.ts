@@ -2,7 +2,7 @@
 import {Controller} from "@nestjs/common";
 import {MessagePattern} from "@nestjs/microservices";
 
-import { EthereumService } from "./wsclient.service";
+import { EthereumService } from "./ethereum.service";
 
 @Controller()
 export class EthereumController {

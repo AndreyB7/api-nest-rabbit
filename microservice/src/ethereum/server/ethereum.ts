@@ -10,6 +10,8 @@ export class EthereumServer extends Server implements CustomTransportStrategy {
     callback();
   }
 
+  public client = ethereum.eth;
+
   private listenToBlocks(): void {
     this.subscription = ethereum.eth.subscribe("newBlockHeaders", (error: Error, blockHeader: any) => {
       if (error) {

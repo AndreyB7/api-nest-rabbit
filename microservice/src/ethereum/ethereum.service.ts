@@ -4,11 +4,11 @@ import {Inject, Injectable} from "@nestjs/common";
 import {Client, ClientProxy, Transport} from "@nestjs/microservices";
 import Web3 from "web3";
 import { BlockTransactionObject, Transaction } from 'web3-eth';
-
+import { ProviderType } from "src/common/providers";
 @Injectable()
 export class EthereumService {
   constructor(
-    @Inject("client")
+    @Inject(ProviderType.WEB3)
     private readonly client: Web3,
   ) {}
 

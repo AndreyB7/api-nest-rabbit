@@ -9,8 +9,8 @@ export class EthereumController {
   constructor(private readonly ethereumService: EthereumService) {}
   
   @MessagePattern("TRANSACTION")
-  public block(block: any): void {
-    return this.ethereumService.block(block);
+  public transaction(data: any): void {
+    return this.ethereumService.transaction(data);
   }
 
 }

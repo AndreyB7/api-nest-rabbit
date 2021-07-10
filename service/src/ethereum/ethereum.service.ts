@@ -1,7 +1,6 @@
-
 export class EthereumService {
   
-  public block(block) {
-    console.log(block);
+  public transaction(data) {
+    console.log(data);
   }
 }

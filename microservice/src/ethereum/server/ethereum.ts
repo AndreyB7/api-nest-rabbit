@@ -1,8 +1,12 @@
 import {Observable, EMPTY} from "rxjs";
 import {CustomTransportStrategy, MessageHandler, Server} from "@nestjs/microservices";
-import ethereum from "./ethereum.client";
+//import ethereum from "./ethereum.client";
+import Web3 from "web3";
 
 export class EthereumServer extends Server implements CustomTransportStrategy {
+  constructor (
+    private readonly web3:Web3
+  ){super()};
   private subscription: any;
 
   public listen(callback: () => void): void {
@@ -10,16 +14,16 @@ export class EthereumServer extends Server implements CustomTransportStrategy {
     callback();
   }
 
-  public client = ethereum.eth;
+  public client = this.web3.eth;
 
   private listenToBlocks(): void {
-    this.subscription = ethereum.eth.subscribe("newBlockHeaders", (error: Error, blockHeader: any) => {
+    this.subscription = this.web3.eth.subscribe("newBlockHeaders", (error: Error, blockHeader: any) => {
       if (error) {
         console.error(error);
         return;
       }
 
-      ethereum.eth.getBlock(blockHeader.number).then(async (block: any) => {
+      this.web3.eth.getBlock(blockHeader.number).then(async (block: any) => {
         return this.call("BLOCK", block);
       });
     });

@@ -1,12 +1,13 @@
 import { Logger, LoggerService } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { ProviderType } from "src/common/providers";
-import Web3 from 'web3';
+//import Web3 from 'web3';
+const Web3 = require('web3');
 
 export const web3Provider = {
   provide: ProviderType.WEB3,
   inject: [ConfigService, Logger],
-  useFactory: (configService: ConfigService, loggerService: LoggerService): Web3 => {
+  useFactory: (configService: ConfigService, loggerService: LoggerService) => {
 
     const wsUrl = configService.get<string>("ETH_NODE_RPC_WEBSOCKET_ADDR", "");
 

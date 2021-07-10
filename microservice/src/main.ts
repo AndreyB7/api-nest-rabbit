@@ -3,13 +3,17 @@ import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from "@nestjs/microservices";
 import { EthereumServer } from './ethereum/server/ethereum'
 import {ConfigService} from "@nestjs/config";
+import Web3 from 'web3';
+import { ProviderType } from './common/providers';
 
 async function bootstrap() {
 
   const app = await NestFactory.create(AppModule);
 
+  const provider = app.get<Web3>(ProviderType.WEB3)
+
   app.connectMicroservice({
-    strategy: new EthereumServer(),
+    strategy: new EthereumServer(provider),
   });
 
   // const configService = app.get(ConfigService);

@@ -8,8 +8,8 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
 	imports: [ConfigModule],
 	providers: [
-		web3Provider,
 		Logger,
+		web3Provider,
 		EthereumService ],
 	controllers: [EthereumController],
 	exports: [ EthereumService ],

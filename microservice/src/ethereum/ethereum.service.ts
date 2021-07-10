@@ -3,6 +3,7 @@ import {mergeAll} from "rxjs/operators";
 import {Inject, Injectable} from "@nestjs/common";
 import {Client, ClientProxy, Transport} from "@nestjs/microservices";
 import Web3 from "web3";
+import { BlockTransactionObject, Transaction } from 'web3-eth';
 
 @Injectable()
 export class EthereumService {
@@ -20,12 +21,12 @@ export class EthereumService {
   })
   ethClient: ClientProxy;
 
-  public block(block: any): Observable<void> {
+  public block(block: BlockTransactionObject): Observable<void> {
     return concat(
-      ...block.transactions.map( (txHash, i) => {
+      ...block.transactions.map( (txHash, i: number) => {
         if (i > 0) return; // testing: get first transaction only
         return from(
-          this.client.eth.getTransaction((txHash as unknown) as string).then((transaction: any) => {
+          this.client.eth.getTransaction((txHash as unknown) as string).then((transaction: Transaction) => {
             return this.ethClient.emit("TRANSACTION", transaction);
           }),
         );

@@ -1,6 +1,5 @@
 import {Observable, EMPTY} from "rxjs";
 import {CustomTransportStrategy, MessageHandler, Server} from "@nestjs/microservices";
-//import ethereum from "./ethereum.client";
 import Web3 from "web3";
 
 export class EthereumServer extends Server implements CustomTransportStrategy {
